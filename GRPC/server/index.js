@@ -220,7 +220,7 @@ function main() {
   //ssl on
   const rootCert = fs.readFileSync(path.join(__dirname, "server-certs", "cat_flip.crt"));
   const privateKey = fs.readFileSync(path.join(__dirname, "server-certs", "server_flip.key"));
-  const certChain = fs.readFileSync(path.join(__dirname, "server-certs", "server_flip.crt"));
+  const certChain = fs.readFileSync(path.join(__dirname, "server-certs", "server_flip_new.crt"));
   const keyCertPairs = [{private_key:privateKey,cert_chain:certChain}];
   const checkClientCertificate = false;//false;
   
