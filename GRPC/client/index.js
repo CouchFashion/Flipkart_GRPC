@@ -17,10 +17,10 @@ const hello_proto = grpc.loadPackageDefinition(
   ).proto;
 const rootCert = fs.readFileSync(path.join(__dirname, "../server/server-certs/cat_flip.crt"))//"../server/server-certs", "cat_flip.crt"));
 const client = new hello_proto.alamodeStream(
-  //  '127.0.0.1:50053',
-  // grpc.credentials.createInsecure() 
-  'grpcflipkart.couchfashion.com',
-  grpc.credentials.createSsl(rootCert)
+   '40.65.143.88:50053',
+  grpc.credentials.createInsecure() 
+  // 'grpcflipkart.couchfashion.com',
+  // grpc.credentials.createSsl(rootCert)
 );
 // client.send(null, meta, null);
 const Login = async function(id, pass){
@@ -29,6 +29,7 @@ const Login = async function(id, pass){
       if(err){
         reject(err)
       } else{
+        console.log(response);
         resolve(response);
       }
     })
@@ -86,6 +87,7 @@ const GetStylingIdeas = async function(token){
       a.push(stylingideas)
     })
     call.on('end',function(){
+      console.log(a);
       resolve(a)
     })
     call.on('error',function(err){
@@ -165,4 +167,10 @@ const SetStreetStylingIdeas = async function(streetStyles, repeatedCount = 0) {
   })
 }
 
-module.exports = {GetStylingIdeas,Login, GetStreetStylingIdeas, AckStyleIdeas, AckStreetStyles}
+const main = async ()=>{
+  const jwtToken = await Login("fk-tech","WTJZcWJYbHVkSEpoWDNOMGVXeGxhVzV6Y0dseVlYUnBiMjQ9");
+  await GetStylingIdeas(jwtToken.jwtToken);
+}
+
+main();
+// module.exports = {GetStylingIdeas,Login, GetStreetStylingIdeas, AckStyleIdeas, AckStreetStyles}
