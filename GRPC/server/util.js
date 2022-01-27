@@ -16,7 +16,7 @@ initObject.getMongoDB()
       StreetStyles = dbObject.collection("StreetStyles");
     } else { */
       MyntraProducts = dbObject.collection("top_sell_flipkart_products");
-      StreetStyles = dbObject.collection("flipkart_SS");
+      StreetStyles = dbObject.collection("FlipkartStreetStyles");
     //}
     Users = dbObject.collection("grpcusers");
   })
@@ -143,7 +143,7 @@ async function getProducts(user){
     }).toArray();
   } else { */
     products = await MyntraProducts.find({
-      readyForFlipkart: true,
+      // readyForFlipkart: true,
       reviewed: true
     }).toArray();
   //}
