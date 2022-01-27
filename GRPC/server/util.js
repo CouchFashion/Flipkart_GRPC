@@ -246,7 +246,7 @@ const getStreetStyleIdeas = async function(user){
     }).toArray();
   } else { */
     styles = await StreetStyles.find({
-      readyforflipkart: true
+      // readyforflipkart: true //to be uncommented after recommendations are done
     }).toArray();
   //}
   
