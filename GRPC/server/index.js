@@ -1,4 +1,3 @@
-//const PROTO_PATH = __dirname + '/../../protos/CfStream.proto';
 const PROTO_PATH = __dirname + '/../../protos/Flipstream.proto';
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
@@ -234,10 +233,10 @@ function main() {
     ackStreetStyles: AckStreetStyles
   });
   server.bind(
-    // '0.0.0.0:50053', 
-    //  grpc.ServerCredentials.createInsecure()
-     '0.0.0.0:50053',
-     grpc.ServerCredentials.createSsl(rootCert,keyCertPairs, checkClientCertificate)
+    '0.0.0.0:50053', 
+     grpc.ServerCredentials.createInsecure()
+    //  '0.0.0.0:50053',
+    //  grpc.ServerCredentials.createSsl(rootCert,keyCertPairs, checkClientCertificate)
     );
     server.start();
   }
@@ -254,19 +253,3 @@ function main() {
   //   ],
   //   checkClientCertificate: true,
   // }));
-  
-  
-  
-  // `privkey.pem`  : the private key for your certificate.
-  // `fullchain.pem`: the certificate file used in most server software.  //ca.crt
-  // `chain.pem`    : used for OCSP stapling in Nginx >=1.3.7.
-  // `cert.pem`     : will break many server configurations, and should not be used
-  //                  without reading further documentation (see link below). //server.crt
-  
-  // WARNING: DO NOT MOVE OR RENAME THESE FILES!
-  //          Certbot expects these files to remain in this location in order
-  //          to function properly!
-  
-  // We recommend not moving these files. For more information, see the Certbot
-  // User Guide at https://certbot.eff.org/docs/using.html#where-are-my-certificates.
-  
