@@ -201,7 +201,7 @@ function getShoppableItems(style){
       if(!crossSell[article_type]){
         crossSell[article_type] = [];
       }
-      crossSell[article_type] = [...crossSell[article_type], ...ss.crossSellStyleIds||[]]
+      crossSell[article_type] = [...crossSell[article_type], ...ss.crossSellproductIds||[]]
     })
   }
   let shoppableItems = [];
